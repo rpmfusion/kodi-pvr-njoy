@@ -1,6 +1,6 @@
-%global commit ce66c1d40819cb42b3e70a3b616a7755099b2f3d
+%global commit 1c0c018476c2b174e047d509c7e94d2a7e0f4f16
 %global short_commit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20170214
+%global commit_date 20170802
 
 %global kodi_addon pvr.njoy
 %global kodi_version 17.0
@@ -9,7 +9,7 @@ Name:           kodi-%(tr "." "-" <<<%{kodi_addon})
 # Use Epoch to manage upgrades from older upstream
 # (https://github.com/opdenkamp/xbmc-pvr-addons/)
 Epoch:          1
-Version:        2.4.3
+Version:        2.4.5
 Release:        1%{?dist}
 Summary:        Kodi's Njoy N7 client addon
 
@@ -56,6 +56,9 @@ cp -p %{SOURCE1} .
 
 
 %changelog
+* Tue Oct 03 2017 Mohamed El Morabity <melmorabity@fedoraproject.org> - 1:2.4.5-1
+- Update to 2.4.5
+
 * Fri Apr 28 2017 Mohamed El Morabity <melmorabity@fedorapeople.org> - 1:2.4.3-1
 - Update to latest stable release for Kodi 17
 
