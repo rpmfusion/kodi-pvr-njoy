@@ -1,6 +1,6 @@
-%global commit 67b837d2daecce340342084b20a7a2c94b0ccc93
+%global commit 204d95bdb133db4ef56c052db1aee318a5765878
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commitdate 20171228
+%global commitdate 20180726
 
 %global kodi_addon pvr.njoy
 %global kodi_version 18.0
@@ -9,8 +9,8 @@ Name:           kodi-%(tr "." "-" <<<%{kodi_addon})
 # Use Epoch to manage upgrades from older upstream
 # (https://github.com/opdenkamp/xbmc-pvr-addons/)
 Epoch:          1
-Version:        3.3.0
-Release:        2%{?dist}
+Version:        3.4.2
+Release:        1%{?dist}
 Summary:        NJOY PVR for Kodi
 
 License:        GPLv2+
@@ -24,7 +24,7 @@ BuildRequires:  kodi-platform-devel >= %{kodi_version}
 BuildRequires:  pkgconfig(tinyxml)
 BuildRequires:  platform-devel
 Requires:       kodi >= %{kodi_version}
-ExclusiveArch:  i686 x86_64
+ExclusiveArch:  i686 x86_64 aarch64
 
 %description
 %{summary}.
@@ -50,6 +50,10 @@ ExclusiveArch:  i686 x86_64
 
 
 %changelog
+* Sat Sep 01 2018 Mohamed El Morabity <melmorabity@fedoraproject.org> - 1:3.4.2-1
+- Update to 3.4.2
+- Enable aarch64 build
+
 * Thu Jul 26 2018 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1:3.3.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
