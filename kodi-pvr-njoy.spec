@@ -1,30 +1,23 @@
-%global commit 204d95bdb133db4ef56c052db1aee318a5765878
-%global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commitdate 20180726
-
 %global kodi_addon pvr.njoy
-%global kodi_version 18.0
-
-%undefine __cmake_in_source_build
+%global kodi_version 19.0
+%global kodi_codename Matrix
 
 Name:           kodi-%(tr "." "-" <<<%{kodi_addon})
 # Use Epoch to manage upgrades from older upstream
 # (https://github.com/opdenkamp/xbmc-pvr-addons/)
 Epoch:          1
-Version:        3.4.2
-Release:        6%{?dist}
+Version:        6.0.0
+Release:        1%{?dist}
 Summary:        NJOY PVR for Kodi
 
 License:        GPLv2+
 URL:            https://github.com/kodi-pvr/%{kodi_addon}/
-Source0:        https://github.com/kodi-pvr/%{kodi_addon}/archive/%{shortcommit}/%{kodi_addon}-%{shortcommit}.tar.gz
+Source0:        %{url}/archive/%{version}-%{kodi_codename}/%{kodi_addon}-%{version}.tar.gz
 
 BuildRequires:  cmake3
 BuildRequires:  gcc-c++
 BuildRequires:  kodi-devel >= %{kodi_version}
-BuildRequires:  kodi-platform-devel >= %{kodi_version}
 BuildRequires:  pkgconfig(tinyxml)
-BuildRequires:  platform-devel
 Requires:       kodi >= %{kodi_version}
 ExcludeArch:    %{power64} ppc64le
 
@@ -33,7 +26,7 @@ ExcludeArch:    %{power64} ppc64le
 
 
 %prep
-%autosetup -n %{kodi_addon}-%{commit}
+%autosetup -n %{kodi_addon}-%{version}-%{kodi_codename}
 
 
 %build
@@ -47,11 +40,15 @@ ExcludeArch:    %{power64} ppc64le
 
 %files
 %doc README.md %{kodi_addon}/changelog.txt
+%license LICENSE.md
 %{_libdir}/kodi/addons/%{kodi_addon}/
 %{_datadir}/kodi/addons/%{kodi_addon}/
 
 
 %changelog
+* Thu Aug 20 2020 Mohamed El Morabity <melmorabity@fedoraproject.org> - 1:6.0.0-1
+- Update to 6.0.0 (switch to Matrix branch)
+
 * Tue Aug 18 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1:3.4.2-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
